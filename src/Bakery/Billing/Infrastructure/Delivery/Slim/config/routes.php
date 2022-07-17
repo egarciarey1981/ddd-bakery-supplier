@@ -11,14 +11,16 @@ use Slim\App;
 use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 
 return function (App $app) {
-    $app->group('/billing', function (Group $group) {
-        $group->group('/api', function (Group $group) {
-            $group->group('/suppliers', function (Group $group) {
-                $group->get('[/]', ListSuppliersAction::class);
-                $group->post('[/]', CreateSupplierAction::class);
-                $group->get('/{id}', ReadSupplierAction::class);
-                $group->put('/{id}', ReplaceSupplierAction::class);
-                $group->patch('/{id}', UpdateSupplierAction::class);
+    $app->group('/bakery', function (Group $group) {
+        $group->group('/billing', function (Group $group) {
+            $group->group('/api', function (Group $group) {
+                $group->group('/suppliers', function (Group $group) {
+                    $group->get('[/]', ListSuppliersAction::class);
+                    $group->post('[/]', CreateSupplierAction::class);
+                    $group->get('/{id}', ReadSupplierAction::class);
+                    $group->put('/{id}', ReplaceSupplierAction::class);
+                    $group->patch('/{id}', UpdateSupplierAction::class);
+                });
             });
         });
     });
