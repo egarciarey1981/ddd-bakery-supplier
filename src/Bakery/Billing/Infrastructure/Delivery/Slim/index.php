@@ -5,10 +5,12 @@ use Slim\Factory\AppFactory;
 use Slim\Factory\ServerRequestCreatorFactory;
 use Slim\ResponseEmitter;
 
-error_reporting(0);
-
 // Instantiate PHP-DI ContainerBuilder
 $containerBuilder = new ContainerBuilder();
+
+// Set up dependencies
+$dependencies = require __DIR__ . '/config/dependencies.php';
+$dependencies($containerBuilder);
 
 // Set up repositories
 $repositories = require __DIR__ . '/config/repositories.php';

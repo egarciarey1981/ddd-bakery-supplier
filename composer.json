@@ -6,7 +6,8 @@
         "php-di/php-di": "^6.4",
         "ramsey/uuid": "^4.3",
         "slim/psr7": "^1.5",
-        "slim/slim": "^4.10"
+        "slim/slim": "^4.10",
+        "twig/twig": "^3.0"
     },
     "config": {
         "process-timeout": 0,
