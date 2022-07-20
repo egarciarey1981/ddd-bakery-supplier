@@ -12,6 +12,7 @@ use Slim\App;
 use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 
 return function (App $app) {
+    $app->redirect('[/]', '/bakery/billing/suppliers', 301);
     $app->group('/bakery', function (Group $group) {
         $group->group('/billing', function (Group $group) {
             $group->group('/api', function (Group $group) {

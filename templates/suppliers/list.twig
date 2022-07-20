@@ -1,1 +1,31 @@
-<h1>Listado de proveedores</h1>
+{% extends "base.twig" %}
+
+{% block title %}
+	List of suppliers
+{% endblock %}
+
+{% block content %}
+	<h1>List of suppliers</h1>
+
+    <p><a class="btn btn-sm btn-success" href="">Create</a></p>
+
+	<table class="table table-striped table-sm">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Options</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for supplier in suppliers %}
+				<tr>
+					<td>{{supplier.name}}</td>
+					<td>
+						<a class="btn btn-sm btn-primary" href="">Edit</a>
+						<a class="btn btn-sm btn-danger" href="">Delete</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
