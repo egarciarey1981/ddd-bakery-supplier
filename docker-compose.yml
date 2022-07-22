@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-    slim:
+    server:
         image: php:8-alpine
         working_dir: /var/www
         command: php -S 0.0.0.0:8080 -t public
@@ -9,3 +9,17 @@ services:
             - 8080:8080
         volumes:
             - .:/var/www
+        links:
+            - db
+    db:
+        image: mariadb
+        environment:
+            MYSQL_DATABASE: bakery
+            MYSQL_USER: baker
+            MYSQL_PASSWORD: baker
+            MYSQL_ROOT_PASSWORD: root
+        ports:
+            - "3306:3306"
+        restart: always
+        volumes:
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
